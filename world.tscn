@@ -234,6 +234,30 @@ radius = 1.3028172
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89688385, -0.42997444)
 text = "Start"
 
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89688385, -5.8732038)
+text = "Coin"
+
+[node name="Label3D4" type="Label3D" parent="."]
+transform = Transform3D(0.19575793, 0, 0.9806523, 0, 1, 0, -0.9806523, 0, 0.19575793, -5.836767, 1.5869733, -14.990572)
+text = "Coin"
+
+[node name="Label3D5" type="Label3D" parent="."]
+transform = Transform3D(0.19575793, 0, 0.9806523, 0, 1, 0, -0.9806523, 0, 0.19575793, -17.084003, 1.5869733, -14.990572)
+text = "Coin"
+
+[node name="Label3D6" type="Label3D" parent="."]
+transform = Transform3D(-0.14053836, 0, -0.9900753, 0, 1, 0, 0.9900753, 0, -0.14053836, -17.579462, 0.1835792, -7.7413845)
+text = "Coin"
+
+[node name="Label3D8" type="Label3D" parent="."]
+transform = Transform3D(-0.14053836, 0, -0.9900753, 0, 1, 0, 0.9900753, 0, -0.14053836, -17.579462, 3.845608, -15.761115)
+text = "Coin"
+
+[node name="Label3D7" type="Label3D" parent="."]
+transform = Transform3D(0.05308537, 0, 0.99859005, 0, 1, 0, -0.99859005, 0, 0.05308537, -16.446423, 3.639391, -7.7413845)
+text = "Coin"
+
 [node name="Label3D2" type="Label3D" parent="."]
 transform = Transform3D(-0.99990684, 0, 0.013647999, 0, 1, 0, -0.013647999, 0, -0.99990684, 0, 3.9408898, -2.3727565)
 text = "Portal (End)"
