@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://3bmc2rrqrq3v"]
+
+[ext_resource type="Script" uid="uid://by8l1v3kdy6nj" path="res://hazard.gd" id="1_0qld2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gvr6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qld2"]
+size = Vector3(2.3755493, 0.6536865, 0.8295288)
+
+[node name="Hazard" type="Area3D"]
+script = ExtResource("1_0qld2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.371555, 0, 0, 0, 0.64564437, 0, 0, 0, 0.8267698, 0, 0, 0)
+mesh = SubResource("BoxMesh_gvr6k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001739502, -0.00030517578, -0.0027770996)
+shape = SubResource("BoxShape3D_0qld2")

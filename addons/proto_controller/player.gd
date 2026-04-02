@@ -16,6 +16,9 @@ extends CharacterBody3D
 ## Can we press to enter freefly mode (noclip)?
 @export var can_freefly : bool = false
 
+@export var required_toll = 5
+@export var fall_threshold = -5.0
+
 @export_group("Speeds")
 ## Look around rotation speed.
 @export var look_speed : float = 0.002
@@ -48,13 +51,16 @@ var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
-var coins = 0
-var required_toll = 50
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+
+@onready var toll_label = $Label3D
+
 signal portal_active
+
+var coins = 0
 
 func _ready() -> void:
 	check_input_mappings()
@@ -120,6 +126,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Use velocity to actually move
 	move_and_slide()
+	
+	if global_position.y < fall_threshold:
+		trigger_reset()
 
 
 ## Rotate us to look around.
@@ -180,11 +189,14 @@ func check_input_mappings():
 		push_error("Freefly disabled. No InputAction found for input_freefly: " + input_freefly)
 		can_freefly = false
 
-func on_obstacle_hit():
+func trigger_reset():
 	coins = 0
+	toll_label.text = "0 / " + str(required_toll)
 	get_tree().reload_current_scene()
 	
 func on_coin_collected():
 	coins += 1
+	toll_label.text = str(coins) + " / " + str(required_toll)
 	if coins >= required_toll:
-		emit_signal("portal_active")
+		toll_label.modulate = Color.GREEN
+		portal_active.emit()

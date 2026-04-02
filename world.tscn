@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://df84giobgqr75"]
+[gd_scene load_steps=8 format=3 uid="uid://df84giobgqr75"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/player.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://dsbogpjsyei30" path="res://coin.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://3bmc2rrqrq3v" path="res://hazard.tscn" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://cmckjicvbcad1" path="res://open_portal.gd" id="4_aqk2v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
 
@@ -15,7 +18,7 @@ sky = SubResource("Sky_tlwt5")
 
 [node name="World" type="Node3D"]
 
-[node name="ProtoController" parent="." instance=ExtResource("1_fj7yv")]
+[node name="Player" parent="." instance=ExtResource("1_fj7yv")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aqk2v")
@@ -166,17 +169,14 @@ use_collision = true
 transform = Transform3D(0.0017732399, 0, 32.722507, 0, 4.7199574, 0, -0.2514769, 0, 0.23073632, -12.209999, 2.436225, 1.6471043)
 use_collision = true
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Indoor Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.2431889, -5.7347393, 0.5676483, -15.183104)
-use_collision = true
+[node name="Hazard" parent="Indoor Level" instance=ExtResource("2_tlwt5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.7347393, 0.5676483, -15.183104)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Indoor Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.2431889, -10.448208, 0.5676483, -15.183104)
-use_collision = true
+[node name="Hazard2" parent="Indoor Level" instance=ExtResource("2_tlwt5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.421088, 0.5676483, -15.183104)
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Indoor Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.2431889, -17.3583, 0.5676483, -15.183104)
-use_collision = true
+[node name="Hazard3" parent="Indoor Level" instance=ExtResource("2_tlwt5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.293179, 0.5676483, -15.183104)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Indoor Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.095787406, -4.807726)
@@ -230,6 +230,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4678288, -0.87653923)
 use_collision = true
 radius = 1.3028172
 
+[node name="Coin" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026815861, 0.84481084, -4.8440905)
+
+[node name="Coin2" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026815861, 0.84481084, -9.692855)
+
+[node name="Coin3" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.6488175, 1.3076589, -15.233633)
+
+[node name="Coin4" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.252328, 1.3076589, -15.233633)
+
+[node name="Coin5" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.386719, 1.3076589, -15.233633)
+
+[node name="Coin6" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.106615, 0.3506022, -7.8109775)
+
+[node name="Coin7" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.106615, 0.3506022, -2.8256998)
+
+[node name="Coin8" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.551122, 0.3506022, -2.8256998)
+
+[node name="Coin9" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.472334, 0.48487538, -2.8256998)
+
+[node name="Coin10" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.274196, 0.48487538, -1.739984)
+
+[node name="Coin11" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.378722, 0.48487538, -11.965848)
+
+[node name="Coin12" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.89619, 3.7606742, -5.655471)
+
+[node name="Coin13" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.580096, 3.7606742, -5.655471)
+
+[node name="Coin14" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.411377, 3.7606742, -5.655471)
+
+[node name="Coin15" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.471668, 3.7606742, -5.655471)
+
+[node name="Coin16" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.662867, 3.7606742, -5.655471)
+
+[node name="Coin17" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.463772, 3.6141794, -14.420335)
+
+[node name="Coin18" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.666244, 3.6141794, -14.420335)
+
+[node name="Coin20" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.980786, 3.6141794, -15.750032)
+
+[node name="Coin21" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.2937627, 3.6141794, -14.4809475)
+
+[node name="Coin22" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.3644321, 3.6141794, -14.777902)
+
+[node name="Coin19" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.889081, 3.6141794, -15.792834)
+
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89688385, -0.42997444)
 text = "Start"
@@ -258,9 +324,10 @@ text = "Coin"
 transform = Transform3D(0.05308537, 0, 0.99859005, 0, 1, 0, -0.99859005, 0, 0.05308537, -16.446423, 3.639391, -7.7413845)
 text = "Coin"
 
-[node name="Label3D2" type="Label3D" parent="."]
+[node name="Portal" type="Label3D" parent="."]
 transform = Transform3D(-0.99990684, 0, 0.013647999, 0, 1, 0, -0.013647999, 0, -0.99990684, 0, 3.9408898, -2.3727565)
-text = "Portal (End)"
+text = "Portal (Closed)"
+script = ExtResource("4_aqk2v")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.044682954, 0.9990012, 0, -0.9990012, 0.044682954, 0, 2.9421687, -5.0992794)
@@ -302,3 +369,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6505375, 1.7908571, -13.03
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4447937, 1.7908571, -13.037849)
+
+[connection signal="portal_active" from="Player" to="Portal" method="_on_player_portal_active"]
+[connection signal="body_entered" from="Indoor Level/Hazard" to="Indoor Level/Hazard" method="_on_body_entered"]
+[connection signal="body_entered" from="Indoor Level/Hazard2" to="Indoor Level/Hazard2" method="_on_body_entered"]
+[connection signal="body_entered" from="Indoor Level/Hazard3" to="Indoor Level/Hazard3" method="_on_body_entered"]
