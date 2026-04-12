@@ -1,19 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://3bmc2rrqrq3v"]
 
 [ext_resource type="Script" uid="uid://by8l1v3kdy6nj" path="res://hazard.gd" id="1_0qld2"]
+[ext_resource type="PackedScene" uid="uid://r2h8flrmthoa" path="res://Models/gltf/spikeRoller.gltf.glb" id="2_scxj1"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_gvr6k"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0qld2"]
-size = Vector3(2.3755493, 0.6536865, 0.8295288)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hnhvq"]
+height = 2.0353546
+radius = 0.17773438
 
 [node name="Hazard" type="Area3D"]
 script = ExtResource("1_0qld2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.371555, 0, 0, 0, 0.64564437, 0, 0, 0, 0.8267698, 0, 0, 0)
-mesh = SubResource("BoxMesh_gvr6k")
+[node name="spikeRoller_gltf" parent="." instance=ExtResource("2_scxj1")]
+transform = Transform3D(0.5, 0, 0, 0, -6.556708e-08, -0.5, 0, 1.5, -2.1855694e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001739502, -0.00030517578, -0.0027770996)
-shape = SubResource("BoxShape3D_0qld2")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -4.44434e-08, 1.0167465)
+shape = SubResource("CylinderShape3D_hnhvq")

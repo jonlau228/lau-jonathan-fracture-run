@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwm2pij4sofia"]
+
+[ext_resource type="PackedScene" uid="uid://byd41q6memv3l" path="res://Models/gltf/tileMedium_teamBlue.gltf.glb" id="1_oj3tl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cgngl"]
+size = Vector3(1.9155273, 1.5144043, 1.9666901)
+
+[node name="Floor" type="StaticBody3D"]
+
+[node name="tileMedium_teamBlue_gltf" parent="." instance=ExtResource("1_oj3tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.527127, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025878906, -0.7771344, 0.024803162)
+shape = SubResource("BoxShape3D_cgngl")

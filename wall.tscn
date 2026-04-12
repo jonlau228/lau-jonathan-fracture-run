@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://08oi8mi73hrp"]
+
+[ext_resource type="PackedScene" uid="uid://bgl2284fe05l5" path="res://Models/dae/tileLarge_teamBlue.dae" id="1_xxgf6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4f30"]
+size = Vector3(5.934021, 1.0228882, 5.9584656)
+
+[node name="Wall" type="StaticBody3D"]
+
+[node name="tileLarge_teamBlue" parent="." instance=ExtResource("1_xxgf6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010101318, 0.5050354, -0.009567261)
+shape = SubResource("BoxShape3D_y4f30")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://rqjbaaea2aau"]
+
+[ext_resource type="PackedScene" uid="uid://ctim5fovhb5ye" path="res://Models/gltf/tileSlopeLowHigh_teamBlue.gltf.glb" id="1_sqs1n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m45xy"]
+size = Vector3(2.1721191, 0.29171753, 1.9827881)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1fgw"]
+size = Vector3(2.010727, 0.9538574, 2.0093384)
+
+[node name="Ramp" type="StaticBody3D"]
+
+[node name="tileSlopeLowHigh_teamBlue_gltf" parent="." instance=ExtResource("1_sqs1n")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8716589, 0.49011284, 0, -0.49011284, 0.8716589, 0, 0, 0, 1, -0.015117362, 1.356714, -0.0015258789)
+shape = SubResource("BoxShape3D_m45xy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00046539307, 0.4810791, -0.002532959)
+shape = SubResource("BoxShape3D_j1fgw")
