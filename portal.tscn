@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf7du3y2ww25u"]
+[gd_scene load_steps=14 format=3 uid="uid://cf7du3y2ww25u"]
 
-[ext_resource type="Shader" uid="uid://2fqwi0vmdudn" path="res://assets/VFX/portal_shader.tres" id="1_55rv8"]
-[ext_resource type="Texture2D" uid="uid://b2g1lkctfpea6" path="res://assets/VFX/T_VFX_lelu1_tiled.png" id="2_r540r"]
-[ext_resource type="Texture2D" uid="uid://etjmnst3x88y" path="res://assets/VFX/T_VFX_Flare_16.PNG" id="3_le3nx"]
+[ext_resource type="Shader" uid="uid://2fqwi0vmdudn" path="res://VFX/portal_shader.tres" id="1_55rv8"]
+[ext_resource type="Texture2D" uid="uid://b2g1lkctfpea6" path="res://VFX/T_VFX_lelu1_tiled.png" id="2_r540r"]
+[ext_resource type="Texture2D" uid="uid://etjmnst3x88y" path="res://VFX/T_VFX_Flare_16.PNG" id="3_le3nx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jim1y"]
 render_priority = 0
 shader = ExtResource("1_55rv8")
 shader_parameter/Color_Intensity = 5.0
-shader_parameter/Portal_Color = Color(0.703654, 0.45106286, 0.8635266, 1)
+shader_parameter/Portal_Color = Color(0.55800503, 0.5642138, 0.7072358, 1)
 shader_parameter/Speed_X_Y = Vector2(0.5, 0.3)
 shader_parameter/Portal_Texture = ExtResource("2_r540r")
 
@@ -18,7 +18,7 @@ shader_parameter/Portal_Texture = ExtResource("2_r540r")
 blend_mode = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(2.1530476, 1.3201187, 2.7083335, 1)
+albedo_color = Color(1.0372193, 1.7996144, 2.6321735, 1)
 albedo_texture = ExtResource("3_le3nx")
 use_particle_trails = true
 
@@ -59,7 +59,11 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_r4pw8"]
 size = 0.2
 
-[node name="Portal" type="Node3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_grrij"]
+height = 0.099365234
+radius = 1.1333008
+
+[node name="Portal" type="Area3D"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -75,3 +79,7 @@ trail_enabled = true
 trail_lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_3muux")
 draw_pass_1 = SubResource("RibbonTrailMesh_r4pw8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1, -4.3711392e-08, 0, 1.8675621e-10, -0.004272461)
+shape = SubResource("CylinderShape3D_grrij")

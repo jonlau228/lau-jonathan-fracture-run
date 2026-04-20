@@ -16,8 +16,11 @@ extends CharacterBody3D
 ## Can we press to enter freefly mode (noclip)?
 @export var can_freefly : bool = false
 
-@export var required_toll = 5
+@export var required_toll = 20
 @export var fall_threshold = -5.0
+@export var level = 1
+@export var level_1: NodePath
+@export var level_2: NodePath
 
 @export_group("Speeds")
 ## Look around rotation speed.
@@ -66,6 +69,7 @@ func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+	MusicManager.play_track(load("res://Victory_Over_Gravity.mp3"))
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -192,11 +196,23 @@ func check_input_mappings():
 func trigger_reset():
 	coins = 0
 	toll_label.text = "0 / " + str(required_toll)
-	get_tree().reload_current_scene()
-	
+	var all_coins = get_tree().get_nodes_in_group("Coins")
+	for coin in all_coins:
+		if coin.has_method("respawn"):
+			coin.respawn()
+	if level == 1:
+		var start = get_node(level_1)
+		global_transform.origin = start.global_transform.origin
+	elif level == 2:
+		var restart = get_node(level_2)
+		global_transform.origin = restart.global_transform.origin
+
 func on_coin_collected():
 	coins += 1
 	toll_label.text = str(coins) + " / " + str(required_toll)
-	if coins >= required_toll:
+	if coins == required_toll:
 		toll_label.modulate = Color.GREEN
 		portal_active.emit()
+
+func new_level():
+	level += 1
